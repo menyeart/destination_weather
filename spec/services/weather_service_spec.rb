@@ -63,7 +63,5 @@ RSpec.describe WeatherService do
         expect(day[:astro][:sunset]).to be_a(String)
       end
     end
-
- 
   end
 end

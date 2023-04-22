@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.weatherapi.com/v1/current.json?aqi=no&key=WEATHER_KEY&q=39.74001,%20-104.99202
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Apr 2023 17:46:44 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Server:
+      - BunnyCDN-IL1-940
+      Cdn-Pullzone:
+      - '93447'
+      Cdn-Uid:
+      - 8fa3a04a-75d9-4707-8056-b7b33c8ac7fe
+      Cdn-Requestcountrycode:
+      - US
+      Cache-Control:
+      - public, max-age=180
+      Cdn-Proxyver:
+      - '1.03'
+      Cdn-Requestpullsuccess:
+      - 'True'
+      Cdn-Requestpullcode:
+      - '200'
+      Cdn-Cachedat:
+      - 04/22/2023 17:46:44
+      Cdn-Edgestorageid:
+      - '1070'
+      Cdn-Status:
+      - '200'
+      Cdn-Requestid:
+      - be6023f64df416e7b9bd0e2cf1ffa9a9
+      Cdn-Cache:
+      - EXPIRED
+    body:
+      encoding: ASCII-8BIT
+      string: '{"location":{"name":"Denver","region":"Colorado","country":"United
+        States of America","lat":39.74,"lon":-104.99,"tz_id":"America/Denver","localtime_epoch":1682185604,"localtime":"2023-04-22
+        11:46"},"current":{"last_updated_epoch":1682185500,"last_updated":"2023-04-22
+        11:45","temp_c":-4.1,"temp_f":24.6,"is_day":1,"condition":{"text":"Patchy
+        light snow","icon":"//cdn.weatherapi.com/weather/64x64/day/323.png","code":1210},"wind_mph":6.9,"wind_kph":11.2,"wind_degree":110,"wind_dir":"ESE","pressure_mb":1022.0,"pressure_in":30.19,"precip_mm":0.0,"precip_in":0.0,"humidity":80,"cloud":100,"feelslike_c":-6.3,"feelslike_f":20.7,"vis_km":6.4,"vis_miles":3.0,"uv":1.0,"gust_mph":3.6,"gust_kph":5.8}}'
+  recorded_at: Sat, 22 Apr 2023 17:46:44 GMT
+recorded_with: VCR 6.1.0
