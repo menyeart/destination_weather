@@ -19,6 +19,7 @@ RSpec.describe 'Users request spec', type: :request do
       user = JSON.parse(response.body, symbolize_names: true)   
 
       expect(response).to be_successful
+      expect(response.status).to eq(201)
       expect(user).to have_key(:data)
       expect(user[:data].keys).to eq(data_keys)
       expect(user[:data][:attributes].keys).to eq(attribute_keys)
@@ -39,6 +40,7 @@ RSpec.describe 'Users request spec', type: :request do
       error = JSON.parse(response.body, symbolize_names: true)   
 
       expect(response).to_not be_successful
+      expect(response.status).to eq(400)
       expect(error).to have_key(:errors)
       expect(error[:errors].first.keys).to eq(error_keys)
       expect(error[:errors].first[:detail]).to eq(["Invalid input"])
@@ -61,6 +63,7 @@ RSpec.describe 'Users request spec', type: :request do
       error = JSON.parse(response.body, symbolize_names: true)   
   
       expect(response).to_not be_successful
+      expect(response.status).to eq(404)
       expect(error).to have_key(:errors)
       expect(error[:errors].first.keys).to eq(error_keys)
       expect(error[:errors].first[:detail]).to eq(["Validation failed: Email has already been taken"])
