@@ -62,10 +62,10 @@ RSpec.describe 'Forecast request spec', type: :request do
       error_keys = [:status, :title, :detail]
 
       expect(response).to_not be_successful
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
       expect(error).to have_key(:errors)
       expect(error[:errors].first.keys).to eq(error_keys)
-      expect(error[:errors].first[:status]).to eq("404")
+      expect(error[:errors].first[:status]).to eq("400")
       expect(error[:errors].first[:title]).to eq("Invalid Request")
       expect(error[:errors].first[:detail]).to eq(["Invalid input"])
     end
