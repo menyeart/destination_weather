@@ -8,6 +8,6 @@ class ApplicationController < ActionController::API
   end
 
   def render_bad_input_response
-    render json: ErrorSerializer.new("Invalid input").invalid_request, status: :not_found
+    render json: ErrorSerializer.new("Invalid input").invalid_request, status: 400
   end
 end
