@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe WeatherService do 
   before(:each) do 
-    @service = WeatherService.new
+    @service = WeatherService.new("39.74001, -104.99202")
   end
 
   describe "exists and has an api call", :vcr do 
@@ -15,7 +15,7 @@ RSpec.describe WeatherService do
     end
 
     it "returns a hash of current weather data" do 
-      result = @service.current_weather("39.74001, -104.99202")
+      result = @service.current_weather
 
       expect(result).to be_a(Hash)
       expect(result).to have_key(:current)
@@ -41,7 +41,7 @@ RSpec.describe WeatherService do
     end
 
     it "returns a hash of daily weather data" do 
-      result = @service.daily_weather("39.74001, -104.99202")
+      result = @service.daily_weather
 
       expect(result).to be_a(Hash)
       expect(result).to have_key(:forecast)
