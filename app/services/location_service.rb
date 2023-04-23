@@ -3,6 +3,10 @@ class LocationService
     @location = location
   end
 
+  def conn 
+    Faraday.new(url: "https://www.mapquestapi.com/")
+  end
+
   def convert_location
     get_url("/geocoding/v1/address?key=#{ENV["MAP_KEY"]}&inFormat=kvp&outFormat=json&location=#{@location}&thumbMaps=false")
   end
@@ -12,7 +16,5 @@ class LocationService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def conn 
-    Faraday.new(url: "https://www.mapquestapi.com/")
-  end
+ 
 end

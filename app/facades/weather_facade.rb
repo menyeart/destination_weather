@@ -2,8 +2,8 @@ class WeatherFacade
 
   def initialize(location)
     @location ||= LocationService.new(location).convert_location
-    @current_weather ||= WeatherService.new.current_weather(extract_location)
-    @daily_weather ||= WeatherService.new.daily_weather(extract_location)
+    @current_weather ||= WeatherService.new(extract_location).current_weather
+    @daily_weather ||= WeatherService.new(extract_location).daily_weather
   end
 
   def current
