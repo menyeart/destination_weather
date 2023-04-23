@@ -67,7 +67,7 @@ RSpec.describe 'Forecast request spec', type: :request do
       expect(error[:errors].first.keys).to eq(error_keys)
       expect(error[:errors].first[:status]).to eq("404")
       expect(error[:errors].first[:title]).to eq("Invalid Request")
-      expect(error[:errors].first[:detail]).to eq(["Invalid location params"])
+      expect(error[:errors].first[:detail]).to eq(["Invalid input"])
     end
   end
 end
