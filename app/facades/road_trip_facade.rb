@@ -3,37 +3,53 @@ class RoadTripFacade
   def initialize(origin, destination)
     @origin = origin
     @destination = destination
-    @directions = DirectionService.new(@origin, @destination).directions
-    @location_service = LocationService.new(@destination).convert_location
+    @directions ||= DirectionService.new(@origin, @destination).directions
+    @location_service ||= LocationService.new(@destination).convert_location
     @location = extract_location
-    @weather = WeatherService.new(@location).daily_weather
+    @weather ||= WeatherService.new(@location).daily_weather
   end
 
   def get_travel_info
     attributes = Hash.new(nil)
-    attributes[:time] = @directions[:route][:time]
-    attributes[:formattedTime] = @directions[:route][:formattedTime]
-    attributes[:distance] = @directions[:route][:distance]
+    if @directions[:info][:messages] == ["We are unable to route with the given locations."]
+      attributes[:formattedTime] = "impossible route" 
+    else  
+      attributes[:time] = @directions[:route][:time]
+      attributes[:formattedTime] = @directions[:route][:formattedTime]
+      attributes[:distance] = @directions[:route][:distance]
+    end
     attributes
   end
 
   def get_days
-    time = @directions[:route][:time] + seconds_elapsed_today
-    time > 86400 ? (time / 86400).floor : 0
+    if @directions[:route][:routeError]
+      nil
+    else
+      time = @directions[:route][:time] + seconds_elapsed_today
+      time > 86400 ? (time / 86400).floor : 0
+    end
   end
 
   def get_hours
-    time = @directions[:route][:time] + seconds_elapsed_today
-    time < 86400 ? (time / 3600).floor : ((time % 86400) / 3600).floor
+    if @directions[:route][:routeError]
+      nil
+    else
+      time = @directions[:route][:time] + seconds_elapsed_today
+      time < 86400 ? (time / 3600).floor : ((time % 86400) / 3600).floor
+    end
   end
 
   def get_destination_weather
     weather = Hash.new(nil)
-    weather_info = @weather[:forecast][:forecastday][get_days][:hour][get_hours]
-    weather[:datetime] = weather_info[:time]
-    weather[:temperature] = weather_info[:temp_f]
-    weather[:condition] = weather_info[:condition][:text]
-    weather
+    if get_days == nil || get_hours == nil?
+      weather
+    else
+      weather_info = @weather[:forecast][:forecastday][get_days][:hour][get_hours]
+      weather[:datetime] = weather_info[:time]
+      weather[:temperature] = weather_info[:temp_f]
+      weather[:condition] = weather_info[:condition][:text]
+      weather
+    end
   end
 
   def extract_location
