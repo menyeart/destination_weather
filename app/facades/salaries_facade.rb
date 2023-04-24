@@ -28,8 +28,8 @@ class SalariesFacade
         if salary["job"]["title"] ==  title
           attributes = Hash.new(nil)
           attributes["title"] = salary["job"]["title"]
-          attributes["min"] = salary["salary_percentiles"]["percentile_25"]
-          attributes["max"] = salary["salary_percentiles"]["percentile_75"]
+          attributes["min"] = "$#{salary["salary_percentiles"]["percentile_25"].round(2)}"
+          attributes["max"] = "$#{salary["salary_percentiles"]["percentile_75"].round(2)}"
         end
           salaries << attributes
       end
@@ -46,7 +46,7 @@ class SalariesFacade
   def get_weather_forecast
     weather = Hash.new(nil)
     weather[:summary] = @current_weather[:current][:condition][:text]
-    weather[:temperature] = @current_weather[:current][:temp_f]
+    weather[:temperature] = "#{@current_weather[:current][:temp_f]} F"
     weather
   end
 
