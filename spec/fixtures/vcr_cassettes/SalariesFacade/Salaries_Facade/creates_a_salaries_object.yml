@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 24 Apr 2023 17:33:26 GMT
+      - Mon, 24 Apr 2023 17:41:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -29,17 +29,17 @@ http_interactions:
       X-Ratelimit-Limit-2628000:
       - '15000'
       X-Ratelimit-Remaining-2628000:
-      - '14320'
+      - '14315'
       Ratelimit-Limit:
       - '15000'
       Ratelimit-Remaining:
-      - '14320'
+      - '14315'
       Ratelimit-Reset:
-      - '2190394'
+      - '2189896'
       X-Powered-By:
       - MapQuest
       X-Request-Id:
-      - 1e8aac80-e2c6-11ed-b258-fd743e58744d
+      - 47a35850-e2c7-11ed-b258-fd743e58744d
       Access-Control-Allow-Origin:
       - "*"
       X-Transaction-Count:
@@ -50,7 +50,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJpbmZvIjp7InN0YXR1c2NvZGUiOjAsImNvcHlyaWdodCI6eyJ0ZXh0IjoiwqkgMjAyMiBNYXBRdWVzdCwgSW5jLiIsImltYWdlVXJsIjoiaHR0cDovL2FwaS5tcWNkbi5jb20vcmVzL21xbG9nby5naWYiLCJpbWFnZUFsdFRleHQiOiLCqSAyMDIyIE1hcFF1ZXN0LCBJbmMuIn0sIm1lc3NhZ2VzIjpbXX0sIm9wdGlvbnMiOnsibWF4UmVzdWx0cyI6LTEsImlnbm9yZUxhdExuZ0lucHV0IjpmYWxzZX0sInJlc3VsdHMiOlt7InByb3ZpZGVkTG9jYXRpb24iOnsibG9jYXRpb24iOiJEZW52ZXIifSwibG9jYXRpb25zIjpbeyJzdHJlZXQiOiIiLCJhZG1pbkFyZWE2IjoiIiwiYWRtaW5BcmVhNlR5cGUiOiJOZWlnaGJvcmhvb2QiLCJhZG1pbkFyZWE1IjoiRGVudmVyIiwiYWRtaW5BcmVhNVR5cGUiOiJDaXR5IiwiYWRtaW5BcmVhNCI6IkRlbnZlciIsImFkbWluQXJlYTRUeXBlIjoiQ291bnR5IiwiYWRtaW5BcmVhMyI6IkNPIiwiYWRtaW5BcmVhM1R5cGUiOiJTdGF0ZSIsImFkbWluQXJlYTEiOiJVUyIsImFkbWluQXJlYTFUeXBlIjoiQ291bnRyeSIsInBvc3RhbENvZGUiOiIiLCJnZW9jb2RlUXVhbGl0eUNvZGUiOiJBNVhBWCIsImdlb2NvZGVRdWFsaXR5IjoiQ0lUWSIsImRyYWdQb2ludCI6ZmFsc2UsInNpZGVPZlN0cmVldCI6Ik4iLCJsaW5rSWQiOiIwIiwidW5rbm93bklucHV0IjoiIiwidHlwZSI6InMiLCJsYXRMbmciOnsibGF0IjozOS43NDAwMSwibG5nIjotMTA0Ljk5MjAyfSwiZGlzcGxheUxhdExuZyI6eyJsYXQiOjM5Ljc0MDAxLCJsbmciOi0xMDQuOTkyMDJ9LCJtYXBVcmwiOiIifV19XX0=
-  recorded_at: Mon, 24 Apr 2023 17:33:26 GMT
+  recorded_at: Mon, 24 Apr 2023 17:41:44 GMT
 - request:
     method: get
     uri: https://api.teleport.org/api/urban_areas/slug:denver/salaries
@@ -76,7 +76,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Mon, 24 Apr 2023 17:32:57 GMT
+      - Mon, 24 Apr 2023 17:39:26 GMT
       Access-Control-Max-Age:
       - '600'
       Cache-Control:
@@ -90,13 +90,13 @@ http_interactions:
       X-Cache:
       - Hit from cloudfront
       Via:
-      - 1.1 68cbf66079d970fd8384ddd79f00d90e.cloudfront.net (CloudFront)
+      - 1.1 f6d641e44b5f98899da25792ac166784.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C1
       X-Amz-Cf-Id:
-      - tX-YpL_S6AGdlyA1PvrN1fQ9QlrKlZ_DQZ55me72gfbG-YiJX2ChHA==
+      - yFq0lKMjYX8cXQo2tbPlgW94okzQz5CrkJEnS92Usc5ztdLm_Bw2HA==
       Age:
-      - '29'
+      - '139'
     body:
       encoding: ASCII-8BIT
       string: '{"_links":{"curies":[{"href":"https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/","name":"location","templated":true},{"href":"https://developers.teleport.org/api/resources/City/#!/relations/{rel}/","name":"city","templated":true},{"href":"https://developers.teleport.org/api/resources/UrbanArea/#!/relations/{rel}/","name":"ua","templated":true},{"href":"https://developers.teleport.org/api/resources/Country/#!/relations/{rel}/","name":"country","templated":true},{"href":"https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/","name":"a1","templated":true},{"href":"https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/","name":"tz","templated":true}],"self":{"href":"https://api.teleport.org/api/urban_areas/slug:denver/salaries/"}},"salaries":[{"job":{"id":"ACCOUNT-MANAGER","title":"Account
@@ -138,7 +138,7 @@ http_interactions:
         Designer"},"salary_percentiles":{"percentile_25":64647.76637002433,"percentile_50":79267.66205244981,"percentile_75":97193.80266438473}},{"job":{"id":"WAITER","title":"Waiter"},"salary_percentiles":{"percentile_25":17669.07598526329,"percentile_50":27045.245825939357,"percentile_75":41396.91981604157}},{"job":{"id":"WEB-DESIGNER","title":"Web
         Designer"},"salary_percentiles":{"percentile_25":38857.385824370846,"percentile_50":47546.68587216852,"percentile_75":58179.089752579195}},{"job":{"id":"WEB-DEVELOPER","title":"Web
         Developer"},"salary_percentiles":{"percentile_25":51218.21672136418,"percentile_50":63464.58172585839,"percentile_75":78639.07397537524}}]}'
-  recorded_at: Mon, 24 Apr 2023 17:33:26 GMT
+  recorded_at: Mon, 24 Apr 2023 17:41:44 GMT
 - request:
     method: get
     uri: http://api.weatherapi.com/v1/current.json?aqi=no&key=WEATHER_KEY&q=39.74001,%20-104.99202
@@ -158,7 +158,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 24 Apr 2023 17:33:26 GMT
+      - Mon, 24 Apr 2023 17:41:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -168,7 +168,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Server:
-      - BunnyCDN-IL1-1069
+      - BunnyCDN-IL1-940
       Cdn-Pullzone:
       - '93447'
       Cdn-Uid:
@@ -184,21 +184,21 @@ http_interactions:
       Cdn-Requestpullcode:
       - '200'
       Cdn-Cachedat:
-      - 04/24/2023 17:32:57
+      - 04/24/2023 17:41:45
       Cdn-Edgestorageid:
       - '1070'
       Cdn-Status:
       - '200'
       Cdn-Requestid:
-      - 630708fb91d382626094bf299f8b4688
+      - ed8c20b3e6430726157c5fc397dc8dde
       Cdn-Cache:
-      - HIT
+      - EXPIRED
     body:
       encoding: ASCII-8BIT
       string: '{"location":{"name":"Denver","region":"Colorado","country":"United
-        States of America","lat":39.74,"lon":-104.99,"tz_id":"America/Denver","localtime_epoch":1682357577,"localtime":"2023-04-24
-        11:32"},"current":{"last_updated_epoch":1682357400,"last_updated":"2023-04-24
+        States of America","lat":39.74,"lon":-104.99,"tz_id":"America/Denver","localtime_epoch":1682358105,"localtime":"2023-04-24
+        11:41"},"current":{"last_updated_epoch":1682357400,"last_updated":"2023-04-24
         11:30","temp_c":12.4,"temp_f":54.3,"is_day":1,"condition":{"text":"Partly
         cloudy","icon":"//cdn.weatherapi.com/weather/64x64/day/116.png","code":1003},"wind_mph":6.9,"wind_kph":11.2,"wind_degree":340,"wind_dir":"NNW","pressure_mb":1013.0,"pressure_in":29.9,"precip_mm":0.0,"precip_in":0.0,"humidity":30,"cloud":50,"feelslike_c":12.9,"feelslike_f":55.2,"vis_km":16.0,"vis_miles":9.0,"uv":4.0,"gust_mph":1.8,"gust_kph":2.9}}'
-  recorded_at: Mon, 24 Apr 2023 17:33:26 GMT
+  recorded_at: Mon, 24 Apr 2023 17:41:45 GMT
 recorded_with: VCR 6.1.0
