@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Forecast request spec', type: :request do
   describe '#show', :vcr do
     it 'returns a single forecast with the specified attributes' do
-
+      
       get "/api/v0/forecast?location=Denver, CO"
 
       forecast = JSON.parse(response.body, symbolize_names: true)
