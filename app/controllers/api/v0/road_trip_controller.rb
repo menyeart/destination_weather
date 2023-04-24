@@ -1,7 +1,12 @@
 class Api::V0::RoadTripController < ApplicationController
 
   def create
-    trip = RoadTripFacade.new(params[:origin], params[:destination]).create_road_trip 
-    render json: RoadTripSerializer.new(trip)
+    user = User.find_by(api_key: params[:api_key])
+    if user != nil
+      trip = RoadTripFacade.new(params[:origin], params[:destination]).create_road_trip 
+      render json: RoadTripSerializer.new(trip), response: 200
+    else
+      render ErrorSerializer.new("Invalid token")
+    end
   end
 end
