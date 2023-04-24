@@ -8,7 +8,7 @@ class SalariesFacade
   end
 
   def parse_salaries
-    salary_positions = [15, 16, 32, 41, 45, 46, 51,]
+    salary_positions = [15, 16, 32, 41, 45, 46, 51]
     salaries = []
     salary_positions.each do |salary|
       hash = Hash.new(nil)
@@ -20,6 +20,10 @@ class SalariesFacade
     salaries
   end
 
+  def parse_salaries2
+
+  end
+
   def extract_location
     location =  @location_service[:results].first[:locations].first[:latLng]
     loc_string = "#{location[:lat]}, #{location[:lng]}"
@@ -28,7 +32,6 @@ class SalariesFacade
 
   def get_weather_forecast
     weather = Hash.new(nil)
-    binding.pry
     weather[:summary] = @current_weather[:current][:condition][:text]
     weather[:temperature] = @current_weather[:current][:temp_f]
     weather
