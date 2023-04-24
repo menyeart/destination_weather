@@ -10,7 +10,7 @@ RSpec.describe 'Salaries request spec', type: :request do
       get "/api/v1/salaries?destination=denver", headers: headers, params: JSON.generate(body)
       
       salaries = JSON.parse(response.body, symbolize_names: true)   
-     
+
       expect(response).to be_successful
       expect(response.status).to eq(200)
       expect(salaries).to have_key(:data)
