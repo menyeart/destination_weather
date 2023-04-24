@@ -17,8 +17,8 @@ RSpec.describe SalariesFacade do
         salaries.each do |salary|
           expect(salary.keys).to eq(keys)
           expect(salary["title"]).to be_a(String)
-          expect(salary["min"]).to be_a(Float)
-          expect(salary["max"]).to be_a(Float)
+          expect(salary["min"]).to be_a(String)
+          expect(salary["max"]).to be_a(String)
         end
     end
 
@@ -36,13 +36,13 @@ RSpec.describe SalariesFacade do
       expect(forecast).to have_key(:summary)
       expect(forecast[:summary]).to be_a(String)
       expect(forecast).to have_key(:temperature)
-      expect(forecast[:temperature]).to be_a(Float)
+      expect(forecast[:temperature]).to be_a(String)
     end
 
     it "creates a salaries object" do
       forecast = SalariesFacade.new("Denver").create_salaries_object
 
-      binding.pry
+  
       expect(forecast.destination).to eq("Denver")
       expect(forecast.forecast).to be_a(Hash)
       expect(forecast.forecast.keys).to eq([:summary, :temperature])
