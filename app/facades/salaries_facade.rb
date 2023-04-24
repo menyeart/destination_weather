@@ -7,21 +7,34 @@ class SalariesFacade
     @current_weather ||= WeatherService.new(extract_location).current_weather
   end
 
-  def parse_salaries
-    salary_positions = [15, 16, 32, 41, 45, 46, 51]
+  # def parse_salaries
+  #   salary_positions = [15, 16, 32, 41, 45, 46, 51]
+  #   salaries = []
+  #   salary_positions.each do |salary|
+  #     hash = Hash.new(nil)
+  #     hash["title"] = @salaries["salaries"][salary]["job"]["title"]
+  #     hash["min"] = @salaries["salaries"][salary]["salary_percentiles"]["percentile_25"]
+  #     hash["max"] = @salaries["salaries"][salary]["salary_percentiles"]["percentile_75"]
+  #     salaries << hash
+  #   end
+  #   salaries
+  # end
+
+  def parse_salaries_refactor
+    salary_titles = ["Data Analyst", "Data Scientist", "Mobile Developer", "QA Engineer", "Software Engineer", "Systems Administrator", "Web Developer"]
     salaries = []
-    salary_positions.each do |salary|
-      hash = Hash.new(nil)
-      hash["title"] = @salaries["salaries"][salary]["job"]["title"]
-      hash["min"] = @salaries["salaries"][salary]["salary_percentiles"]["percentile_25"]
-      hash["max"] = @salaries["salaries"][salary]["salary_percentiles"]["percentile_75"]
-      salaries << hash
+    @salaries["salaries"].each do |salary|
+      salary_titles.each do |title|
+        if salary["job"]["title"] ==  title
+          attributes = Hash.new(nil)
+          attributes["title"] = salary["job"]["title"]
+          attributes["min"] = salary["salary_percentiles"]["percentile_25"]
+          attributes["max"] = salary["salary_percentiles"]["percentile_75"]
+        end
+          salaries << attributes
+      end
     end
-    salaries
-  end
-
-  def parse_salaries2
-
+    salaries.compact
   end
 
   def extract_location
@@ -38,11 +51,6 @@ class SalariesFacade
   end
 
   def create_salaries_object
-    Salaries.new(@location, get_weather_forecast, parse_salaries)
+    Salaries.new(@location, get_weather_forecast, parse_salaries_refactor)
   end
-
-
 end
-
-
-
