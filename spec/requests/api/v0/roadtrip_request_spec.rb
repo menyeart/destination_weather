@@ -56,5 +56,28 @@ RSpec.describe 'Roadtrip request spect', type: :request do
       expect(trip[:data][:attributes][:travel_time]).to eq("impossible route")
       expect(trip[:data][:attributes][:weather_at_eta]).to eq({})
     end
+
+    it "returns an error object if an incorrect token is entered" do
+      user = User.create!(email: "whatever@example.com", password: 'password', api_key: 'key')
+      error_keys = [:status, :title, :detail]
+    
+      headers = { 'CONTENT_TYPE' => 'application/json' }
+      body =  {
+
+        "origin": "New York City, NY",
+        "destination": "London, England",
+        "api_key": "nottherightkey"
+
+              }
+      post "/api/v0/road_trip", headers: headers, params: JSON.generate(body)
+
+      error = JSON.parse(response.body, symbolize_names: true)   
+   
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+      expect(error).to have_key(:errors)
+      expect(error[:errors].first.keys).to eq(error_keys)
+      expect(error[:errors].first[:detail]).to eq(["Invalid token"])
+    end
   end
 end
