@@ -37,13 +37,14 @@ RSpec.describe 'Users request spec', type: :request do
                                                
               }
       post "/api/v0/users", headers: headers, params: JSON.generate(body)
+   
       error = JSON.parse(response.body, symbolize_names: true)   
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
       expect(error).to have_key(:errors)
       expect(error[:errors].first.keys).to eq(error_keys)
-      expect(error[:errors].first[:detail]).to eq(["Invalid input"])
+      expect(error[:errors].first[:detail]).to eq(["Passwords do not match"])
     end
 
     it "returns an error response if the email is already in the dtabase" do
