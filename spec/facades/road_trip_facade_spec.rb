@@ -1,18 +1,17 @@
 require "rails_helper"
 
-RSpec.describe RoadTripFacade do 
-  before(:each) do 
+RSpec.describe RoadTripFacade do
+  before(:each) do
     @facade = RoadTripFacade.new("Los Angeles, CA", "New York City, NY")
   end
-  describe "Road Trip Facade", :vcr do 
-    it "exists" do 
-
+  describe "Road Trip Facade", :vcr do
+    it "exists" do
       expect(@facade).to be_a(RoadTripFacade)
     end
 
-    it "creates a road trip object with attributes" do 
+    it "creates a road trip object with attributes" do
       trip = @facade.create_road_trip
-   
+
       expect(trip).to be_a(RoadTrip)
       expect(trip.end_city).to eq("New York City, NY")
       expect(trip.start_city).to eq("Los Angeles, CA")
@@ -24,9 +23,9 @@ RSpec.describe RoadTripFacade do
       expect(trip.weather_at_eta[:condition]).to be_a(String)
     end
 
-    it "finds the seconds elapsed in a day so far" do 
+    it "finds the seconds elapsed in a day so far" do
       seconds = @facade.seconds_elapsed_today
-   
+
       expect(seconds).to be_a(Float)
     end
 

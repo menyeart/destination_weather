@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Forecast request spec', type: :request do
   describe '#show', :vcr do
     it 'returns a single forecast with the specified attributes' do
-      
       get "/api/v0/forecast?location=Denver, CO"
 
       forecast = JSON.parse(response.body, symbolize_names: true)
@@ -12,7 +11,7 @@ RSpec.describe 'Forecast request spec', type: :request do
       current_keys = [:last_updated, :temperature, :feels_like, :humidity, :uvi, :visibility, :condition, :icon]
       daily_keys = [:date, :sunrise, :sunset, :max_temp, :min_temp, :condition, :icon]
       hourly_keys = [:time, :temperature, :conditions, :icon]
-  
+
       expect(response).to be_successful
       expect(forecast).to be_a(Hash)
       expect(forecast).to have_key(:data)
@@ -31,7 +30,7 @@ RSpec.describe 'Forecast request spec', type: :request do
       expect(forecast[:data][:attributes][:current_weather][:visibility]).to be_a(Float)
       expect(forecast[:data][:attributes][:current_weather][:condition]).to be_a(String)
       expect(forecast[:data][:attributes][:current_weather][:icon]).to be_a(String)
-     
+
       expect(forecast[:data][:attributes][:daily_weather]).to be_a(Array)
       expect(forecast[:data][:attributes][:daily_weather].count).to eq(5)
       forecast[:data][:attributes][:daily_weather].each do |day|

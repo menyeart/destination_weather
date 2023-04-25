@@ -1,22 +1,22 @@
 require "rails_helper"
 
-RSpec.describe DirectionService do 
-  before(:each) do 
+RSpec.describe DirectionService do
+  before(:each) do
     @service = DirectionService.new("Boulder, CO", "Denver, CO")
   end
 
-  describe "exists and has an api call", :vcr do 
-    it "is a service" do 
+  describe "exists and has an api call", :vcr do
+    it "is a service" do
       expect(@service).to be_a(DirectionService)
     end
 
-    it "has a connection to faraday" do 
+    it "has a connection to faraday" do
       expect(@service.conn).to be_a(Faraday::Connection)
     end
 
-    it "takes beginning and end arugments and returns travel time" do 
+    it "takes beginning and end arugments and returns travel time" do
       result = @service.directions
- 
+
       expect(result).to be_a(Hash)
       expect(result).to have_key(:route)
       expect(result[:route]).to have_key(:time)

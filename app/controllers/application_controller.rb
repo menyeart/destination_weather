@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  rescue_from NoMethodError::undef_method, with: :render_bad_input_response
+  rescue_from NoMethodError.undef_method, with: :render_bad_input_response
   rescue_from JSON::ParserError, with: :render_invalid_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_response
 

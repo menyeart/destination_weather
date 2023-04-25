@@ -27,7 +27,6 @@
 
 # REST API
 
-  The REST API to the example app is described below.
 
 ## Get the weather forecast for a location
 
