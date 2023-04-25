@@ -50,5 +50,52 @@ RSpec.describe WeatherFacade do
         expect(hour[:icon]).to be_a(String)
       end
     end
+
+    it "extracts current weather information" do
+      weather = @facade.current
+      keys = [:last_updated, :temperature, :feels_like, :humidity, :uvi, :visibility, :condition, :icon]
+  
+      expect(weather).to be_a(Hash)
+      expect(weather.keys).to eq(keys)
+      expect(weather[:last_updated]).to be_a(String)
+      expect(weather[:temperature]).to be_a(Float)
+      expect(weather[:feels_like]).to be_a(Float)
+      expect(weather[:uvi]).to be_a(Float)
+      expect(weather[:visibility]).to be_a(Float)
+      expect(weather[:condition]).to be_a(String)
+      expect(weather[:icon]).to be_a(String)
+    end
+
+    it "extracts and formats daily weather information" do
+      weather = @facade.daily
+      keys = [:date, :sunrise, :sunset, :max_temp, :min_temp, :condition, :icon]
+  
+      expect(weather).to be_a(Array)
+      weather.each do |day|
+        expect(day.keys).to eq(keys)
+        expect(day[:date]).to be_a(String)
+        expect(day[:sunrise]).to be_a(String)
+        expect(day[:sunset]).to be_a(String)
+        expect(day[:max_temp]).to be_a(Float)
+        expect(day[:min_temp]).to be_a(Float)
+        expect(day[:condition]).to be_a(String)
+        expect(day[:icon]).to be_a(String)
+      end
+    end
+
+    it "extracts and formats hourly weather information" do
+      weather = @facade.hourly
+      keys = [:time, :temperature, :conditions, :icon]
+  
+      expect(weather).to be_a(Array)
+      expect(weather.count).to eq(24)
+      weather.each do |day|
+        expect(day.keys).to eq(keys)
+        expect(day[:time]).to be_a(String)
+        expect(day[:temperature]).to be_a(Float)
+        expect(day[:conditions]).to be_a(String)
+        expect(day[:icon]).to be_a(String)
+      end
+    end
   end
 end

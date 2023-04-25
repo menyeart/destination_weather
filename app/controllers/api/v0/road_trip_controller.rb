@@ -6,7 +6,7 @@ class Api::V0::RoadTripController < ApplicationController
       trip = RoadTripFacade.new(params[:origin], params[:destination]).create_road_trip 
       render json: RoadTripSerializer.new(trip), response: 200
     else
-      render ErrorSerializer.new("Invalid token")
+      render json: ErrorSerializer.new("Invalid token").invalid_request, status: 404
     end
   end
 end
