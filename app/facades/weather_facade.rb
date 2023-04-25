@@ -16,7 +16,6 @@ class WeatherFacade
     current[:visibility] = @current_weather[:current][:vis_miles]
     current[:condition] = @current_weather[:current][:condition][:text]
     current[:icon] = @current_weather[:current][:condition][:icon]
-
     current
   end
 
