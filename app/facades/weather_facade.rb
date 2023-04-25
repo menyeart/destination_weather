@@ -1,5 +1,4 @@
 class WeatherFacade
-
   def initialize(location)
     @location ||= LocationService.new(location).convert_location
     @current_weather ||= WeatherService.new(extract_location).current_weather
@@ -45,9 +44,8 @@ class WeatherFacade
   end
 
   def extract_location
-    location =  @location[:results].first[:locations].first[:latLng]
-    loc_string = "#{location[:lat]}, #{location[:lng]}"
-    loc_string
+    location = @location[:results].first[:locations].first[:latLng]
+    "#{location[:lat]}, #{location[:lng]}"
   end
 
   def create_weather_obj

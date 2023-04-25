@@ -3,20 +3,20 @@ require 'rails_helper'
 RSpec.describe 'Users request spec', type: :request do
   describe '#create' do
     it 'adds a user to the database, generates an api key and returns a successful response with id, email and api key' do
-      data_keys = [ :id, :type, :attributes]
+      data_keys = [:id, :type, :attributes]
       attribute_keys = [:email, :api_key]
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
       body =  {
-        
+
         'email': 'whatever@example.com',
         'password': 'password',
         'password_confirmation': 'password'
-                                               
-              }
-      post "/api/v0/users", headers: headers, params: JSON.generate(body)
 
-      user = JSON.parse(response.body, symbolize_names: true)   
+      }
+      post "/api/v0/users", headers:, params: JSON.generate(body)
+
+      user = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
       expect(response.status).to eq(201)
@@ -30,15 +30,15 @@ RSpec.describe 'Users request spec', type: :request do
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
       body =  {
-        
+
         'email': 'whatever@example.com',
         'password': 'password',
         'password_confirmation': 'passwor'
-                                               
-              }
-      post "/api/v0/users", headers: headers, params: JSON.generate(body)
-   
-      error = JSON.parse(response.body, symbolize_names: true)   
+
+      }
+      post "/api/v0/users", headers:, params: JSON.generate(body)
+
+      error = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
@@ -52,17 +52,17 @@ RSpec.describe 'Users request spec', type: :request do
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
       body =  {
-        
+
         'email': 'whatever@example.com',
         'password': 'password',
         'password_confirmation': 'password'
-                                               
-              }
-      post "/api/v0/users", headers: headers, params: JSON.generate(body)
-      post "/api/v0/users", headers: headers, params: JSON.generate(body)
 
-      error = JSON.parse(response.body, symbolize_names: true)   
-  
+      }
+      post "/api/v0/users", headers:, params: JSON.generate(body)
+      post "/api/v0/users", headers:, params: JSON.generate(body)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
       expect(error).to have_key(:errors)

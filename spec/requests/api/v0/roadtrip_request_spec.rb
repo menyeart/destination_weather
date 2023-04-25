@@ -16,11 +16,11 @@ RSpec.describe 'Roadtrip request spect', type: :request do
         "destination": "Chicago,IL",
         "api_key": key
 
-              }
-      post "/api/v0/road_trip", headers: headers, params: JSON.generate(body)
-      
-      trip = JSON.parse(response.body, symbolize_names: true)   
-  
+      }
+      post "/api/v0/road_trip", headers:, params: JSON.generate(body)
+
+      trip = JSON.parse(response.body, symbolize_names: true)
+
       expect(response).to be_successful
       expect(response.status).to eq(200)
       expect(trip).to have_key(:data)
@@ -43,10 +43,10 @@ RSpec.describe 'Roadtrip request spect', type: :request do
         "destination": "London, England",
         "api_key": key
 
-              }
-      post "/api/v0/road_trip", headers: headers, params: JSON.generate(body)
-    
-      trip = JSON.parse(response.body, symbolize_names: true)   
+      }
+      post "/api/v0/road_trip", headers:, params: JSON.generate(body)
+
+      trip = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
@@ -60,7 +60,7 @@ RSpec.describe 'Roadtrip request spect', type: :request do
     it "returns an error object if an incorrect token is entered" do
       user = User.create!(email: "whatever@example.com", password: 'password', api_key: 'key')
       error_keys = [:status, :title, :detail]
-    
+
       headers = { 'CONTENT_TYPE' => 'application/json' }
       body =  {
 
@@ -68,11 +68,11 @@ RSpec.describe 'Roadtrip request spect', type: :request do
         "destination": "London, England",
         "api_key": "nottherightkey"
 
-              }
-      post "/api/v0/road_trip", headers: headers, params: JSON.generate(body)
+      }
+      post "/api/v0/road_trip", headers:, params: JSON.generate(body)
 
-      error = JSON.parse(response.body, symbolize_names: true)   
-   
+      error = JSON.parse(response.body, symbolize_names: true)
+
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
       expect(error).to have_key(:errors)

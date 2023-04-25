@@ -6,8 +6,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-
-private
+  private
 
   def set_api_key
     self.api_key = ApiKey.generator
