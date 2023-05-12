@@ -1,6 +1,6 @@
 # Destination Weather REST API
 
-    Destination Weather (Whether, Sweater?) is a student project for the Turing School of Software and Design Backend Software Engineering program. It demonstrates skills in consuming external APIs, creating API endpoints that return objects serialized to JSON:API spec, displaying CRUD fuctionality and showing a strong understanding of MVC and OOD principles in the context of a Ruby on Rails application.
+Destination Weather (Whether, Sweater?) is a student project for the Turing School of Software and Design Backend Software Engineering program. It demonstrates skills in consuming external APIs, creating API endpoints that return objects serialized to JSON:API spec, displaying CRUD fuctionality and showing a strong understanding of MVC and OOD principles in the context of a Ruby on Rails application.
 
 # Built With
 
